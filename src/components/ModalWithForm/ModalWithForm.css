@@ -21,7 +21,7 @@
   font-weight: 700;
   font-size: 16px;
   padding: 0;
-  position: absolute;
+  /* position: absolute; */
   top: 28px;
   left: 20px;
 }
@@ -30,6 +30,7 @@
   top: 20px;
   right: 28px;
   background-image: url(../../assets/close.png);
+
   color: #000;
   width: 20px;
   height: 20px;
@@ -39,9 +40,10 @@
   background-color: #fff;
   border-radius: 20px;
   display: flex;
-  align-items: center;
+  /* align-items: center; */
+  align-items: left;
   flex-direction: column;
-  justify-content: center;
+  /* justify-content: center; */
   margin: auto;
   position: relative;
   padding: 28px 28px 28px 36px;
@@ -67,6 +69,8 @@
   display: flex;
   /* align-items: center; */
   flex-direction: column;
+  margin-left: 0;
+  margin-top: 24px;
 }
 .modal__form {
   display: flex;
@@ -83,6 +87,7 @@
   border-bottom: 1px solid black;
   width: 100%;
   margin-right: 10px;
+  margin-bottom: 24px;
 }
 .modal__radio-buttons {
   /* border: none;
@@ -106,10 +111,14 @@
 .modal__label_type_radio {
   margin: 2px;
   display: flex;
+  flex-direction: row;
   /* align-items: center; */
+  gap: 5px;
 }
-/* .modal__image {
-} */
+.modal__image {
+  width: 100%;
+  background-size: contain;
+}
 
 .modal__legend {
   display: flex;
