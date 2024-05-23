@@ -1,9 +1,2 @@
 @import url("./vendor/normilize.css");
-@font-face {
-  font-family: "YourFontName";
-  src: url("./path/to/your/font.woff2") format("woff2"),
-    url("./path/to/your/font.woff") format("woff");
-  /* Optionally specify font-weight and font-style */
-  font-weight: normal;
-  font-style: normal;
-}
+ 

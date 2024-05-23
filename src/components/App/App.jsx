@@ -5,7 +5,7 @@ import Header from "../Header/Header";
 import Main from "../Main/Main";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import ItemModal from "../ItemModal/ItemModal";
-import Footer from "../Footer/Footer";
+import Fonts from "../Footer/Footer";
 import {
   getWeather,
   filterWeatherData,
@@ -96,14 +96,13 @@ function App() {
           </label>
         </fieldset>
       </ModalWithForm>
+      <Fonts />
       <ItemModal
         activeModal={activeModal}
         card={selectedCard}
         onClick={closeActiveModal}
       />
-  
     </div>
-    
   );
 }
 
