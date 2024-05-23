@@ -20,6 +20,7 @@
   max-width: 68px;
   text-align: center;
   transform: translateX(-50%);
+  font-family: "CabinetGrotesk";
 }
 
 .card__image {
