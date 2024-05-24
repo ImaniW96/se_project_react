@@ -29,14 +29,17 @@
   position: absolute;
   top: 20px;
   right: 28px;
-  background-image: url(../../assets/close.png);
-  background-color: transparent;
+  background-image: url(../../assets/closeModal.png);
   background-repeat: no-repeat;
-
   color: #000;
   width: 20px;
   height: 20px;
   border: none;
+}
+.modal__close_image {
+  background-image: url(../../assets/close.png);
+  background-color: transparent;
+  background-repeat: no-repeat;
 }
 
 .modal__content {

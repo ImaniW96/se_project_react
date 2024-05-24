@@ -6,7 +6,7 @@ function ItemModal({ activeModal, onClick, card }) {
         <button
           onClick={onClick}
           type="button"
-          className="modal__close"
+          className="modal__close modal__close_image"
         ></button>
         <img src={card.link} alt="profile-picture" className="modal__image" />
         <div className="modal__footer">
