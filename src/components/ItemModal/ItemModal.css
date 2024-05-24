@@ -1,3 +1,23 @@
 .modal__content_type_image {
+  max-height: 610px;
+  height: 100%;
+}
+
+.modal__content_image {
+  background-color: #fff;
+  border-radius: 20px;
+  display: flex;
+  align-items: start;
+  flex-direction: column;
+  margin: auto;
+  position: relative;
+  padding: 0;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 496px;
   height: 610px;
+}
+
+.modal__footer {
+  padding: 0 28px 28px 28px;
 }

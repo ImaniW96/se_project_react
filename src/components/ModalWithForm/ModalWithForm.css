@@ -30,12 +30,15 @@
   top: 20px;
   right: 28px;
   background-image: url(../../assets/close.png);
+  background-color: transparent;
+  background-repeat: no-repeat;
 
   color: #000;
   width: 20px;
   height: 20px;
   border: none;
 }
+
 .modal__content {
   background-color: #fff;
   border-radius: 20px;
@@ -108,6 +111,8 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
 }
 
 .modal__legend {
