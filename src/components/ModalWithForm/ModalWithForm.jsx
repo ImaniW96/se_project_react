@@ -8,7 +8,9 @@ function ModalWithForm({
 }) {
   return (
     <div
-      className={`modal ${activeModal === "add-garment" && "modal_opened"} `}
+      className={`modal ${
+        activeModal === "add-garment" && "isOpen" && "modal_opened"
+      } `}
     >
       <div className="modal__content">
         <h2 className="modal__title">{title}</h2>
@@ -19,13 +21,13 @@ function ModalWithForm({
         ></button>
         <form className="modal__form">
           {children}
-          {/* <button type="submit" className="modal__submit">
+          <button type="submit" className="modal__submit">
             {buttonText}
-          </button> */}
+          </button>
         </form>
-        <button type="submit" className="modal__submit">
+        {/* <button type="submit" className="modal__submit">
           {buttonText}
-        </button>
+        </button> */}
       </div>
     </div>
   );

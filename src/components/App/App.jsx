@@ -5,7 +5,7 @@ import Header from "../Header/Header";
 import Main from "../Main/Main";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import ItemModal from "../ItemModal/ItemModal";
-import Fonts from "../Footer/Footer";
+import Footer from "../Footer/Footer";
 import {
   getWeather,
   filterWeatherData,
@@ -61,7 +61,7 @@ function App() {
             placeholder="Name"
           />
         </label>
-        <label htmlFor="imagetUrl" className="modal__label">
+        <label htmlFor="imageUrl" className="modal__label">
           Image{""}
           <input
             type="text"
@@ -75,7 +75,7 @@ function App() {
           {/* <legend className="modal__legend">Select the weather type:</legend> */}
           <label htmlFor="hot" className="modal__label modal__label_type_radio">
             {" "}
-            <input id="cold" type="radio" className="modal__radio-input" />
+            <input id="hot" type="radio" className="modal__radio-input" />
             Hot
           </label>
           <label
@@ -83,7 +83,7 @@ function App() {
             className="modal__label modal__label_type_radio"
           >
             {" "}
-            <input id="cold" type="radio" className="modal__radio-input" />
+            <input id="warm" type="radio" className="modal__radio-input" />
             Warm
           </label>
           <label
@@ -96,7 +96,7 @@ function App() {
           </label>
         </fieldset>
       </ModalWithForm>
-      <Fonts />
+      <Footer />
       <ItemModal
         activeModal={activeModal}
         card={selectedCard}
