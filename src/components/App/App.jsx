@@ -6,11 +6,7 @@ import Main from "../Main/Main";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import ItemModal from "../ItemModal/ItemModal";
 import Footer from "../Footer/Footer";
-import {
-  getWeather,
-  filterWeatherData,
-  //   filterWeatherData,
-} from "../../utils/weatherApi";
+import { getWeather, filterWeatherData } from "../../utils/weatherApi";
 import { corrdinates, APIkey } from "../../utils/constants";
 
 function App() {
@@ -21,6 +17,7 @@ function App() {
   });
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
+  const isOpen = activeModal !== null;
 
   const handleCardClick = (card) => {
     setActiveModal("preview");
@@ -51,6 +48,7 @@ function App() {
         buttonText="Add garment"
         activeModal={activeModal}
         handleCloseClick={closeActiveModal}
+        isOpen={isOpen}
       >
         <label htmlFor="name" className="modal__label">
           Name{""}
