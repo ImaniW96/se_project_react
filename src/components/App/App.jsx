@@ -28,6 +28,10 @@ function App() {
   const handleAddClick = () => {
     setActiveModal("add-garment");
   };
+  const handleToggleSwitchChange = () => {
+    if (currentTemperatureUnit === "C") setCurrentTemperatureUnit("F");
+    else if (currentTemperatureUnit === "F") setCurrentTemperatureUnit("C");
+  };
   const closeActiveModal = () => {
     setActiveModal("");
   };
