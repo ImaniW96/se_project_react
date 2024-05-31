@@ -9,6 +9,8 @@ import Footer from "../Footer/Footer";
 import { getWeather, filterWeatherData } from "../../utils/weatherApi";
 import { corrdinates, APIkey } from "../../utils/constants";
 import { currentTemperatureUnitContext } from "../../contexts/CurrentTempatureUnitContext";
+import { useContext } from "react";
+import { Routes, Route } from "react-router-dom";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -28,10 +30,7 @@ function App() {
   const handleAddClick = () => {
     setActiveModal("add-garment");
   };
-  const handleToggleSwitchChange = () => {
-    if (currentTemperatureUnit === "C") setCurrentTemperatureUnit("F");
-    else if (currentTemperatureUnit === "F") setCurrentTemperatureUnit("C");
-  };
+
   const closeActiveModal = () => {
     setActiveModal("");
   };
@@ -54,7 +53,18 @@ function App() {
       <div className="page">
         <div className="page__content">
           <Header handleAddClick={handleAddClick} weatherData={weatherData} />
-          <Main weatherData={weatherData} handleCardClick={handleCardClick} />
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <Main
+                  weatherData={weatherData}
+                  handleCardClick={handleCardClick}
+                />
+              }
+            />
+            <Route path="/profile" element={<p>PROFILE</p>} />
+          </Routes>
         </div>
         <ModalWithForm
           title="New garment"
