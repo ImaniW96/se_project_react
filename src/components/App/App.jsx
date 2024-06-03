@@ -6,12 +6,14 @@ import Main from "../Main/Main";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import ItemModal from "../ItemModal/ItemModal";
 import Profile from "../Profile/Profile";
+
 import Footer from "../Footer/Footer";
 import { getWeather, filterWeatherData } from "../../utils/weatherApi";
 import { corrdinates, APIkey } from "../../utils/constants";
 import { currentTemperatureUnitContext } from "../../contexts/CurrentTempatureUnitContext";
 import { useContext } from "react";
 import { Routes, Route } from "react-router-dom";
+import { getItems } from "../../utils/api";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -23,6 +25,7 @@ function App() {
   const [selectedCard, setSelectedCard] = useState({});
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
   const isOpen = activeModal !== null;
+  const [clothingItems, setClothingItems] = useState([]);
 
   const handleCardClick = (card) => {
     setActiveModal("preview");
@@ -43,6 +46,14 @@ function App() {
       })
       .catch(console.error);
   }, []);
+  useEffect(() => {
+    getItems()
+      .then((data) => {
+        setClothingItems(data);
+        console.log(data);
+      })
+      .catch(console.err);
+  }, []);
   const handleToggleSwitchChange = () => {
     if (currentTemperatureUnit === "C") setCurrentTemperatureUnit("F");
     if (currentTemperatureUnit === "F") setCurrentTemperatureUnit("C");
@@ -61,10 +72,14 @@ function App() {
                 <Main
                   weatherData={weatherData}
                   handleCardClick={handleCardClick}
+                  clothingItems={clothingItems}
                 />
               }
             />
-            <Route path="/profile" element={<Profile />} />
+            <Route
+              path="/profile"
+              element={<Profile handleCardClick={handleCardClick} />}
+            />
           </Routes>
         </div>
         <ModalWithForm
