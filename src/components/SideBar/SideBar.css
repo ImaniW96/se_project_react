@@ -1,0 +1,10 @@
+.sidebar__username {
+  font-weight: 700;
+  display: flex;
+  white-space: nowrap;
+  margin-left: 10px;
+}
+.sidebar {
+  display: flex;
+  align-items: center;
+}
