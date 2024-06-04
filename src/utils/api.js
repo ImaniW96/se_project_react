@@ -5,3 +5,7 @@ function getItems() {
   });
 }
 export { getItems };
+
+function deleteCard() {
+  return fetch(`${baseUrl}/delete`).then((res) => {});
+}

@@ -20,4 +20,30 @@
 
 .modal__footer {
   padding: 0 28px 28px 28px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+.modal__delete-btn {
+  font-weight: 700;
+  color: #ff4d00;
+  font-size: 20px;
+  line-height: 24px;
+  position: absolute;
+  border: none;
+  background-color: #fff;
+  margin-top: 15px;
+  right: -270px;
+}
+.modal__caption {
+  margin-bottom: 0;
+}
+
+.modal__weather-caption {
+  font-weight: 700;
+  font-size: 20px;
+}
+.modal__weather {
+  font-weight: 700;
+  font-size: 20px;
 }

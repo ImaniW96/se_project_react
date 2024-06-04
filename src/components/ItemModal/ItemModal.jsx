@@ -11,7 +11,14 @@ function ItemModal({ activeModal, onClick, card }) {
         <img src={card.imageUrl} alt={card.name} className="modal__image" />
         <div className="modal__footer">
           <h2 className="modal__caption">{card.name}</h2>
-          <p className="modal__weather">{card.weather}</p>
+
+          <p className="modal__weather">
+            <span className="modal__weather-caption">Weather:</span> {card.weather}
+          </p>
+          <button type="button" className="modal__delete-btn">
+            {" "}
+            Delete card
+          </button>
         </div>
       </div>
     </div>
