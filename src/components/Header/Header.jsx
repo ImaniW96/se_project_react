@@ -30,7 +30,7 @@ function Header({ handleAddClick, weatherData }) {
       <ToggleSwitch />
 
       <div className="header__user-container">
-        <Link to="profile">
+        <Link className="header__link" to="profile">
           <p className="header__username">Terrence Tegegne</p>
           <img
             src={avatar}

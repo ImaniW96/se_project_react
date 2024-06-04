@@ -26,7 +26,7 @@ export const filterWeatherData = (data) => {
 const isDay = ({ sunrise, sunset }, now) => {
   return sunrise * 1000 < now && now < sunset * 1000;
 };
-// const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
+
 const getWeatherType = (temperature) => {
   if (temperature > 86) {
     return "hot";
@@ -36,6 +36,3 @@ const getWeatherType = (temperature) => {
     return "cold";
   }
 };
-
-// weather.temperature.F = `${Math.round(data.main.temp)}°F`;
-// weather.temperature.C = `${Math.round(((data.main.temp - 32) * 5) / 9)}°C`;
