@@ -6,7 +6,7 @@ import Main from "../Main/Main";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import ItemModal from "../ItemModal/ItemModal";
 import Profile from "../Profile/Profile";
-
+// import Api from "../../utils/api";
 import Footer from "../Footer/Footer";
 import { getWeather, filterWeatherData } from "../../utils/weatherApi";
 import { corrdinates, APIkey } from "../../utils/constants";
@@ -38,6 +38,10 @@ function App() {
 
   const closeActiveModal = () => {
     setActiveModal("");
+  };
+  const OnAddItem = (e) => {
+    e.preventDefault();
+    console.log(e);
   };
   useEffect(() => {
     getWeather(corrdinates, APIkey)

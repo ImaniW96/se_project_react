@@ -1,6 +1,12 @@
+export default class Api {
+  constructor({ baseUrl, headers }) {
+    this._baseUrl = baseUrl;
+    this._headers = headers;
+  }
+}
 const baseUrl = "http://localhost:3001";
 const headers = "Content-Type: application/json";
-header = this._headers;
+
 function getItems() {
   return fetch(`${baseUrl}/items`).then((res) => {
     return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
