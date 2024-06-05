@@ -8,6 +8,7 @@
   width: 55px;
   height: 30px;
   appearance: none;
+  margin: 0 auto;
 }
 .switch__slider {
   border-radius: 20px;
