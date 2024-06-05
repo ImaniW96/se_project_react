@@ -1,6 +1,7 @@
 .switch {
   display: flex;
   position: relative;
+  margin: 0 20px 0 auto;
 }
 .switch__box {
   border-radius: 25px;
@@ -8,7 +9,7 @@
   width: 55px;
   height: 30px;
   appearance: none;
-  margin: 0 20px 0 auto;
+  /* margin: 0 20px 0 auto; */
 }
 .switch__slider {
   border-radius: 20px;

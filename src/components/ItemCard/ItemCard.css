@@ -4,6 +4,8 @@
   position: relative;
   display: flex;
   justify-content: center;
+}
+.card__profile {
   margin: 20px;
 }
 .card__name {
