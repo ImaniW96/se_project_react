@@ -92,7 +92,7 @@ function App() {
             />
           </Routes>
         </div>
-        <ModalWithForm
+        {/* <ModalWithForm
           title="New garment"
           buttonText="Add garment"
           activeModal={activeModal}
@@ -161,8 +161,11 @@ function App() {
               Cold
             </label>
           </fieldset>
-        </ModalWithForm>
-
+        </ModalWithForm> */}
+        <AddItemModal
+          isOpen={activeModal === "add-garment"}
+          closeActiveModal={closeActiveModal}
+        />
         <Footer />
 
         <ItemModal
