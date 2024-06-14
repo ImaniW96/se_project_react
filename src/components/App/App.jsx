@@ -39,9 +39,8 @@ function App() {
   const closeActiveModal = () => {
     setActiveModal("");
   };
-  const OnAddItem = (e) => {
-    e.preventDefault();
-    console.log(e);
+  const onAddItem = (values) => {
+    console.log(values);
   };
   useEffect(() => {
     getWeather(corrdinates, APIkey)
@@ -165,6 +164,7 @@ function App() {
         <AddItemModal
           isOpen={activeModal === "add-garment"}
           closeActiveModal={closeActiveModal}
+          onAddItem={onAddItem}
         />
         <Footer />
 
