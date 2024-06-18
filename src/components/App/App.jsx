@@ -32,6 +32,11 @@ function App() {
     setActiveModal("preview");
     setSelectedCard(card);
   };
+  // api
+  //   .getItems()
+  //   .then((data) => console.log(data))
+  //   .catch((error) => console.error(error));
+
   const handleAddClick = () => {
     setActiveModal("add-garment");
   };
