@@ -1,27 +1,39 @@
 import React, { useState } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 const AddItemModal = ({ closeActiveModal, onAddItem, isOpen }) => {
-  const [name, setName] = useState("");
-  const handleNameChange = (e) => {
-    console.log(e);
-    console.log(e.target.value);
-    setName(e.target.value);
-  };
-  const [link, setUrl] = useState("");
-  const handleUrlChange = (e) => {
-    e.preventDefault();
-    setUrl(e.target.value);
-  };
-  const [temp, setTemp] = useState("");
-  const handleTempChange = (e) => {
-    e.preventDefault();
-    setTemp(e.target.value);
+  // const [name, setName] = useState("");
+  // const handleNameChange = (e) => {
+  //   console.log(e);
+  //   console.log(e.target.value);
+  //   setName(e.target.value);
+  // };
+  // const [link, setUrl] = useState("");
+  // const handleUrlChange = (e) => {
+  //   e.preventDefault();
+  //   setUrl(e.target.value);
+  // };
+  // const [temp, setTemp] = useState("");
+  // const handleTempChange = (e) => {
+  //   e.preventDefault();
+  //   setTemp(e.target.value);
+  // };
+  const [values, setValues] = useState({ name: "", imageUrl: "", weather: "" });
+
+  const handleChange = (e) => {
+    setValues({ ...values, [e.target.name]: e.target.value }); //values = {name:beanie, imageUrl: http:sdf, weather: 'hot' });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onAddItem({ name, link, temp });
+    onAddItem(values)
+      .then(() => {
+        closeActiveModal();
+        setValues({ name: "", imageUrl: "", weather: "" });
+      })
+      .catch();
   };
+
+  console.log({ values });
   return (
     <ModalWithForm
       title="New garment"
@@ -37,8 +49,9 @@ const AddItemModal = ({ closeActiveModal, onAddItem, isOpen }) => {
           className="modal__input"
           id="name"
           placeholder="Name"
-          value={name}
-          onChange={handleNameChange}
+          name="name"
+          value={values.name}
+          onChange={handleChange}
         />
       </label>
       <label htmlFor="imageUrl" className="modal__label">
@@ -48,8 +61,9 @@ const AddItemModal = ({ closeActiveModal, onAddItem, isOpen }) => {
           className="modal__input"
           id="imageUrl"
           placeholder="image Url"
-          value={link}
-          onChange={handleUrlChange}
+          name="imageUrl"
+          value={values.imageUrl}
+          onChange={handleChange}
         />
       </label>
       <legend className="modal__legend">Select the weather type:</legend>
@@ -58,10 +72,12 @@ const AddItemModal = ({ closeActiveModal, onAddItem, isOpen }) => {
           {" "}
           <input
             id="hot"
+            value="hot"
             type="radio"
             className="modal__radio-input"
-            name="weatherType"
-            onChange={handleTempChange}
+            name="weather"
+            onChange={handleChange}
+            checked={values.weather === "hot"}
           />
           Hot
         </label>
@@ -69,26 +85,25 @@ const AddItemModal = ({ closeActiveModal, onAddItem, isOpen }) => {
           {" "}
           <input
             id="warm"
+            value="warm"
             type="radio"
             className="modal__radio-input"
-            name="weatherType"
-            onChange={handleTempChange}
+            name="weather"
+            onChange={handleChange}
+            checked={values.weather === "warm"}
           />
           Warm
         </label>
-        <label
-          htmlFor="cold"
-          className="modal__label modal__label_type_radio"
-          name="weatherType"
-          onChange={handleTempChange}
-        >
+        <label htmlFor="cold" className="modal__label modal__label_type_radio">
           {" "}
           <input
             id="cold"
+            value="cold"
             type="radio"
             className="modal__radio-input"
-            name="weatherType"
-            onChange={handleTempChange}
+            name="weather"
+            onChange={handleChange}
+            checked={values.weather === "cold"}
           />
           Cold
         </label>

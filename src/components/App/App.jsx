@@ -13,7 +13,7 @@ import { corrdinates, APIkey } from "../../utils/constants";
 import { currentTemperatureUnitContext } from "../../contexts/CurrentTempatureUnitContext";
 import { useContext } from "react";
 import { Routes, Route } from "react-router-dom";
-import { getItems } from "../../utils/api";
+import { getItems, addItem } from "../../utils/api";
 import AddItemModal from "../AddItemModal/AddItemModal";
 
 function App() {
@@ -40,12 +40,22 @@ function App() {
   const handleAddClick = () => {
     setActiveModal("add-garment");
   };
-
+  const handleDeleteItem = (id) => {
+    // delete the item on the server
+    return deleteItemById(id);
+    // delete the item on the dom. (use the filter method)
+    const updatedClothingItems = clothingItems.filter(() => {}); // only keep the items that don't have the deleted item's id
+    setClothingItems(updatedClothingItems);
+  };
   const closeActiveModal = () => {
     setActiveModal("");
   };
-  const onAddItem = (values) => {
-    console.log(values);
+  const handleAddItemModalSubmit = (values) => {
+    // add the item to the server
+    return addItem(values).then((item) => {
+      // add the item on the dom
+      setClothingItems([...clothingItems, item]);
+    });
   };
   useEffect(() => {
     getWeather(corrdinates, APIkey)
@@ -91,6 +101,7 @@ function App() {
                 <Profile
                   handleCardClick={handleCardClick}
                   clothingItems={clothingItems}
+                  handleAddClick={handleAddClick}
                 />
               }
             />
@@ -169,7 +180,7 @@ function App() {
         <AddItemModal
           isOpen={activeModal === "add-garment"}
           closeActiveModal={closeActiveModal}
-          onAddItem={onAddItem}
+          onAddItem={handleAddItemModalSubmit}
         />
         <Footer />
 
