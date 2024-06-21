@@ -9,8 +9,7 @@
   font-size: 20px;
 }
 
-/* .clothes-section {
-} */
+ 
 .clothes-section__items {
   display: flex;
   flex-direction: row;

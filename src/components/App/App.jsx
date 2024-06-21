@@ -40,12 +40,30 @@ function App() {
   const handleAddClick = () => {
     setActiveModal("add-garment");
   };
+  // const handleDeleteItem = (id) => {
+  //   // delete the item on the server
+  //   return deleteItemById(id).then(() => {
+  //     const updatedClothingItems = clothingItems.filter(() => {
+  //       setClothingItems(updatedClothingItems);
+  //     }); // only keep the items that don't have the deleted item's id
+  //     // setClothingItems(updatedClothingItems);
+  //   });
+  //   // delete the item on the dom. (use the filter method)
+  // };
   const handleDeleteItem = (id) => {
-    // delete the item on the server
-    return deleteItemById(id);
-    // delete the item on the dom. (use the filter method)
-    const updatedClothingItems = clothingItems.filter(() => {}); // only keep the items that don't have the deleted item's id
-    setClothingItems(updatedClothingItems);
+    deleteCard(id);
+    // Delete the item on the server
+    return deleteItemById(id)
+      .then(() => {
+        // Filter out the deleted item from clothingItems
+        const updatedClothingItems = clothingItems.filter(
+          (item) => item.id !== id
+        );
+        setClothingItems(updatedClothingItems); // Update state with filtered items
+      })
+      .catch((error) => {
+        console.error("Error deleting item:", error);
+      });
   };
   const closeActiveModal = () => {
     setActiveModal("");
