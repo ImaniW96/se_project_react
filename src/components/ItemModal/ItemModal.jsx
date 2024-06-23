@@ -1,7 +1,7 @@
 import "./ItemModal.css";
-function ItemModal({ activeModal, onClick, card, deleteCard }) {
-  const handelDeleteCard = () => {
-    deleteCard(id);
+function ItemModal({ activeModal, onClick, card, handelDeleteCard }) {
+  const handelDeleteCardClick = () => {
+    handelDeleteCard(id);
     closeActiveModal();
   };
   return (
@@ -23,7 +23,7 @@ function ItemModal({ activeModal, onClick, card, deleteCard }) {
           <button
             type="button"
             className="modal__delete-btn"
-            onClick={deleteCard}
+            onClick={handelDeleteCardClick}
           >
             {" "}
             Delete card
