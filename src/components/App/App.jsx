@@ -13,7 +13,7 @@ import { corrdinates, APIkey } from "../../utils/constants";
 import { currentTemperatureUnitContext } from "../../contexts/CurrentTempatureUnitContext";
 import { useContext } from "react";
 import { Routes, Route } from "react-router-dom";
-import { getItems, addItem, handleDeleteItem } from "../../utils/api";
+import { getItems, addItem, deleteItemById } from "../../utils/api";
 import AddItemModal from "../AddItemModal/AddItemModal";
 
 function App() {
