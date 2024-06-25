@@ -34,7 +34,7 @@ function checkResponse(res) {
   }
 }
 
-export { getItems, addItem };
+export { getItems, addItem, deleteItemById };
 
 // export default class Api {
 //   constructor({ baseUrl, headers }) {

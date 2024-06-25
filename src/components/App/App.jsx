@@ -137,7 +137,7 @@ function App() {
           activeModal={activeModal}
           card={selectedCard}
           onClick={closeActiveModal}
-          handleDeleteCard={handleDeleteCard}
+          deleteItemById={deleteItemById}
         />
       </div>
     </currentTemperatureUnitContext.Provider>
