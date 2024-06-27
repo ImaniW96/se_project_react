@@ -10,7 +10,7 @@ import Profile from "../Profile/Profile";
 import Footer from "../Footer/Footer";
 import { getWeather, filterWeatherData } from "../../utils/weatherApi";
 import { corrdinates, APIkey } from "../../utils/constants";
-import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTempatureUnitContext";
+import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
 import { useContext } from "react";
 import { Routes, Route } from "react-router-dom";
 import { getItems, addItem, deleteItemById } from "../../utils/api";
