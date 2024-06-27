@@ -1,8 +1,8 @@
 import "./ItemModal.css";
-function ItemModal({ activeModal, onClick, card, handelDeleteCard }) {
-  const handelDeleteCardClick = () => {
-    handelDeleteCard(id);
-    closeActiveModal();
+function ItemModal({ activeModal, onClick, card, handleDeleteItem }) {
+  const handleDeleteCardClick = () => {
+    handleDeleteItem(card._id);
+    onClick();
   };
   return (
     <div className={`modal ${activeModal === "preview" && "modal_opened"} `}>
@@ -23,7 +23,7 @@ function ItemModal({ activeModal, onClick, card, handelDeleteCard }) {
           <button
             type="button"
             className="modal__delete-btn"
-            onClick={handelDeleteCardClick}
+            onClick={handleDeleteCardClick}
           >
             {" "}
             Delete card

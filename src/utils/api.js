@@ -8,7 +8,7 @@ function getItems() {
 }
 
 function deleteItemById(Id) {
-  return fetch(`${baseUrl}/id/${Id}`, {
+  return fetch(`${baseUrl}/items/${Id}`, {
     method: "DELETE",
     headers: headers,
   }).then((res) => {

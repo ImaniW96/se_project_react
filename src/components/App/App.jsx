@@ -51,13 +51,13 @@ function App() {
   //   // delete the item on the dom. (use the filter method)
   // };
   const handleDeleteItem = (id) => {
-    deleteCard(id);
+    //deleteCard(id);
     // Delete the item on the server
     return deleteItemById(id)
       .then(() => {
         // Filter out the deleted item from clothingItems
         const updatedClothingItems = clothingItems.filter(
-          (item) => item.id !== id
+          (item) => item._id !== id
         );
         setClothingItems(updatedClothingItems); // Update state with filtered items
       })
@@ -137,11 +137,17 @@ function App() {
           activeModal={activeModal}
           card={selectedCard}
           onClick={closeActiveModal}
-          deleteItemById={deleteItemById}
+          handleDeleteItem={handleDeleteItem}
         />
       </div>
     </currentTemperatureUnitContext.Provider>
   );
 }
+// props = {
+//   activeModal: activeModal,
+//   card: selectedCard,
+//   onClick: closeActiveModal,
+//   handleDeleteItem: handleDeleteItem,
+// };
 
 export default App;
