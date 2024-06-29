@@ -4,10 +4,29 @@ import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnit
 
 import { useContext } from "react";
 
+// function WeatherCard({ weatherData }) {
+//   const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
+
+//   const filteredOptions = weatherOptions.filter((option) => {
+//     return (
+//       option.day === weatherData.isDay &&
+//       option.condition === weatherData.condition
+//     );
+//   });
+//   let weatherOption;
+
+//   console.log({ weatherData, filteredOptions });
+//   if (filteredOptions.length === 0) {
+//     weatherOption = defaultWeatherOptions[weatherData.isDay ? "day" : "night"];
+
+//     console.log({ weatherOption });
+//   } else {
+//     weatherOption = filteredOptions[0];
+//   }
 function WeatherCard({ weatherData }) {
   const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
 
-  const filteredOptions = weatherOptions.filter((option) => {
+  const Options = weatherOptions.find((option) => {
     return (
       option.day === weatherData.isDay &&
       option.condition === weatherData.condition
@@ -15,14 +34,15 @@ function WeatherCard({ weatherData }) {
   });
   let weatherOption;
 
-  console.log({ weatherData, filteredOptions });
-  if (filteredOptions.length === 0) {
+  console.log({ weatherData });
+  if (Options) {
     weatherOption = defaultWeatherOptions[weatherData.isDay ? "day" : "night"];
-    debugger;
+
     console.log({ weatherOption });
   } else {
-    weatherOption = filteredOptions[0];
+    weatherOption = weatherOption;
   }
+
   return (
     <section className="weather-card">
       <p className="weather-card__temp">

@@ -28,7 +28,7 @@ const AddItemModal = ({ closeActiveModal, onAddItem, isOpen }) => {
     onAddItem(values)
       .then(() => {
         closeActiveModal();
-        setValues({ name: "", imageUrl: "", weather: "" });
+        setValues({ name: "", imageUrl: "", weather: "", onDone });
       })
       .catch();
   };

@@ -47,3 +47,6 @@
   font-weight: 700;
   font-size: 20px;
 }
+.modal__delete-btn:hover {
+  cursor: pointer;
+}

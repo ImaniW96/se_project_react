@@ -70,10 +70,12 @@ function App() {
   };
   const handleAddItemModalSubmit = (values) => {
     // add the item to the server
-    return addItem(values).then((item) => {
-      // add the item on the dom
-      setClothingItems([...clothingItems, item]);
-    });
+    return addItem(values)
+      .then((item) => {
+        // add the item on the dom
+        setClothingItems((prevItems) => [...clothingItems, item, ...prevItems]);
+      })
+      .catch(console.error);
   };
   useEffect(() => {
     getWeather(corrdinates, APIkey)
@@ -92,8 +94,9 @@ function App() {
       .catch(console.err);
   }, []);
   const handleToggleSwitchChange = () => {
-    if (currentTemperatureUnit === "C") setCurrentTemperatureUnit("F");
-    if (currentTemperatureUnit === "F") setCurrentTemperatureUnit("C");
+    // if (currentTemperatureUnit === "C") setCurrentTemperatureUnit("F");
+    // if (currentTemperatureUnit === "F") setCurrentTemperatureUnit("C");
+    setCurrentTemperatureUnit(currentTemperatureUnit === "F" ? "C" : "F");
   };
   return (
     <CurrentTemperatureUnitContext.Provider

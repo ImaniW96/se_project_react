@@ -45,3 +45,6 @@
 .header__avatar {
   margin-left: 20px;
 }
+.header__add-clothes-btn:hover {
+  cursor: pointer;
+}
