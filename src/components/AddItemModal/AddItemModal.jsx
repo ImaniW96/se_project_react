@@ -25,12 +25,12 @@ const AddItemModal = ({ closeActiveModal, onAddItem, isOpen }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onAddItem(values)
-      .then(() => {
-        closeActiveModal();
-        setValues({ name: "", imageUrl: "", weather: "", onDone });
-      })
-      .catch();
+    onAddItem(values);
+    // .then(() => {
+    //   closeActiveModal();
+    //   setValues({ name: "", imageUrl: "", weather: "", onDone });
+    // })
+    // .catch();
   };
 
   console.log({ values });

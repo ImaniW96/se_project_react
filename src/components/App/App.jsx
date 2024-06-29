@@ -73,7 +73,7 @@ function App() {
     return addItem(values)
       .then((item) => {
         // add the item on the dom
-        setClothingItems((prevItems) => [...clothingItems, item, ...prevItems]);
+        setClothingItems([item, ...clothingItems]);
       })
       .catch(console.error);
   };
