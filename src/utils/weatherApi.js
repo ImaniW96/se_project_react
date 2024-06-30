@@ -1,4 +1,4 @@
-// import { checkResponse } from "./api.js";
+import { checkResponse } from "./api.js";
 
 // export const getWeather = ({ latitude, longitude }, APIkey) => {
 //   return fetch(
@@ -11,13 +11,14 @@
 //     }
 //   });
 // };
-export const checkResponse = (res) => {
-  if (res.ok) {
-    return res.json();
-  } else {
-    return Promise.reject(`Error: ${res.status}`);
-  }
-};
+// export const checkResponse = (res) => {
+//   if (res.ok) {
+//     return res.json();
+//   } else {
+//     return Promise.reject(`Error: ${res.status}`);
+//   }
+// };
+export default checkResponse;
 
 export const getWeather = ({ latitude, longitude }, APIkey) => {
   return fetch(

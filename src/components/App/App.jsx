@@ -74,6 +74,7 @@ function App() {
       .then((item) => {
         // add the item on the dom
         setClothingItems([item, ...clothingItems]);
+        closeActiveModal();
       })
       .catch(console.error);
   };
