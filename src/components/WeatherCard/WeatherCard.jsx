@@ -26,7 +26,7 @@ import { useContext } from "react";
 function WeatherCard({ weatherData }) {
   const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
 
-  const Options = weatherOptions.find((option) => {
+  const option = weatherOptions.find((option) => {
     return (
       option.day === weatherData.isDay &&
       option.condition === weatherData.condition
@@ -35,12 +35,12 @@ function WeatherCard({ weatherData }) {
   let weatherOption;
 
   console.log({ weatherData });
-  if (Options) {
+  if (!option) {
     weatherOption = defaultWeatherOptions[weatherData.isDay ? "day" : "night"];
 
     console.log({ weatherOption });
   } else {
-    weatherOption = weatherOption;
+    weatherOption = option;
   }
 
   return (
