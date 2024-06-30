@@ -18,7 +18,7 @@ import { checkResponse } from "./api.js";
 //     return Promise.reject(`Error: ${res.status}`);
 //   }
 // };
-export default checkResponse;
+// export default checkResponse;
 
 export const getWeather = ({ latitude, longitude }, APIkey) => {
   return fetch(
