@@ -6,7 +6,7 @@ import Main from "../Main/Main";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import ItemModal from "../ItemModal/ItemModal";
 import Profile from "../Profile/Profile";
-// import Api from "../../utils/api";
+ 
 import Footer from "../Footer/Footer";
 import { getWeather, filterWeatherData } from "../../utils/weatherApi";
 import { corrdinates, APIkey } from "../../utils/constants";
@@ -32,26 +32,14 @@ function App() {
     setActiveModal("preview");
     setSelectedCard(card);
   };
-  // api
-  //   .getItems()
-  //   .then((data) => console.log(data))
-  //   .catch((error) => console.error(error));
+   
 
   const handleAddClick = () => {
     setActiveModal("add-garment");
   };
-  // const handleDeleteItem = (id) => {
-  //   // delete the item on the server
-  //   return deleteItemById(id).then(() => {
-  //     const updatedClothingItems = clothingItems.filter(() => {
-  //       setClothingItems(updatedClothingItems);
-  //     }); // only keep the items that don't have the deleted item's id
-  //     // setClothingItems(updatedClothingItems);
-  //   });
-  //   // delete the item on the dom. (use the filter method)
-  // };
+  
   const handleDeleteItem = (id) => {
-    //deleteCard(id);
+    
     // Delete the item on the server
     return deleteItemById(id)
       .then(() => {
@@ -95,8 +83,7 @@ function App() {
       .catch(console.err);
   }, []);
   const handleToggleSwitchChange = () => {
-    // if (currentTemperatureUnit === "C") setCurrentTemperatureUnit("F");
-    // if (currentTemperatureUnit === "F") setCurrentTemperatureUnit("C");
+ 
     setCurrentTemperatureUnit(currentTemperatureUnit === "F" ? "C" : "F");
   };
   return (

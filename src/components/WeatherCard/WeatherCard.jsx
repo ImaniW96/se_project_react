@@ -4,25 +4,7 @@ import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnit
 
 import { useContext } from "react";
 
-// function WeatherCard({ weatherData }) {
-//   const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
-
-//   const filteredOptions = weatherOptions.filter((option) => {
-//     return (
-//       option.day === weatherData.isDay &&
-//       option.condition === weatherData.condition
-//     );
-//   });
-//   let weatherOption;
-
-//   console.log({ weatherData, filteredOptions });
-//   if (filteredOptions.length === 0) {
-//     weatherOption = defaultWeatherOptions[weatherData.isDay ? "day" : "night"];
-
-//     console.log({ weatherOption });
-//   } else {
-//     weatherOption = filteredOptions[0];
-//   }
+ 
 function WeatherCard({ weatherData }) {
   const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
 
