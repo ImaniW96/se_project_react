@@ -41,4 +41,4 @@ function checkResponse(res) {
   }
 }
 
-export { getItems, addItem, deleteItemById, checkResponse };
+export { getItems, addItem, deleteItemById, checkResponse, baseUrl };

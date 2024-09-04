@@ -6,7 +6,8 @@ import Main from "../Main/Main";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import ItemModal from "../ItemModal/ItemModal";
 import Profile from "../Profile/Profile";
- 
+import { signup } from "../../utils/auth";
+
 import Footer from "../Footer/Footer";
 import { getWeather, filterWeatherData } from "../../utils/weatherApi";
 import { corrdinates, APIkey } from "../../utils/constants";
@@ -15,6 +16,9 @@ import { useContext } from "react";
 import { Routes, Route } from "react-router-dom";
 import { getItems, addItem, deleteItemById } from "../../utils/api";
 import AddItemModal from "../AddItemModal/AddItemModal";
+import RegisterModal from "../RegisterModal/Register";
+import LogInModal from "../LoginModal/LogIn";
+import EditProfileModal from "../EditProfileModal/EditProfile";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -27,19 +31,45 @@ function App() {
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
   const isOpen = activeModal !== null;
   const [clothingItems, setClothingItems] = useState([]);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const handleCardClick = (card) => {
     setActiveModal("preview");
     setSelectedCard(card);
   };
-   
 
   const handleAddClick = () => {
     setActiveModal("add-garment");
   };
-  
+  const handleSignupClick = () => {
+    setActiveModal("sign-up");
+  };
+  const handleLogInClick = () => {
+    setActiveModal("log-in");
+  };
+  const handleProfileChangeClick = () => {
+    setActiveModal("change-data");
+  };
+
+  // {
+  //   email: "",
+  //   password: "",
+  //   name: "",
+  //   avatarUrl: "",
+  // }
+  function handleRegisterModalSubmit({ name, email, password, avatarUrl }) {
+    signup(name, avatarUrl, email, password)
+      .then(() => {
+        // log the user in here as well
+        closeActiveModal();
+      })
+      .catch((error) => {
+        console.error(error, "Failed to sign up");
+        alert("Failed to sign up");
+      });
+  }
+
   const handleDeleteItem = (id) => {
-    
     // Delete the item on the server
     return deleteItemById(id)
       .then(() => {
@@ -82,8 +112,32 @@ function App() {
       })
       .catch(console.err);
   }, []);
+  // const handleCardLike = ({ id, isLiked }) => {
+  //   const token = localStorage.getItem("jwt");
+  //   // Check if this card is not currently liked
+  //   !isLiked
+  //     ? // if so, send a request to add the user's id to the card's likes array
+  //       api
+  //         // the first argument is the card's id
+  //         .addCardLike(id, token)
+  //         .then((updatedCard) => {
+  //           setClothingItems((cards) =>
+  //             cards.map((item) => (item._id === id ? updatedCard : item))
+  //           );
+  //         })
+  //         .catch((err) => console.log(err))
+  //     : // if not, send a request to remove the user's id from the card's likes array
+  //       api
+  //         // the first argument is the card's id
+  //         .removeCardLike(id, token)
+  //         .then((updatedCard) => {
+  //           setClothingItems((cards) =>
+  //             cards.map((item) => (item._id === id ? updatedCard : item))
+  //           );
+  //         })
+  //         .catch((err) => console.log(err));
+  // };
   const handleToggleSwitchChange = () => {
- 
     setCurrentTemperatureUnit(currentTemperatureUnit === "F" ? "C" : "F");
   };
   return (
@@ -92,7 +146,14 @@ function App() {
     >
       <div className="page">
         <div className="page__content">
-          <Header handleAddClick={handleAddClick} weatherData={weatherData} />
+          <Header
+            handleAddClick={handleAddClick}
+            handleLoginClick={handleLogInClick}
+            handleSignupClick={handleSignupClick}
+            handleProfileChangeClick={handleProfileChangeClick}
+            weatherData={weatherData}
+            isLoggedIn={isLoggedIn}
+          />
           <Routes>
             <Route
               path="/"
@@ -111,6 +172,7 @@ function App() {
                   handleCardClick={handleCardClick}
                   clothingItems={clothingItems}
                   handleAddClick={handleAddClick}
+                  handleProfileChangeClick={handleProfileChangeClick}
                 />
               }
             />
@@ -121,6 +183,21 @@ function App() {
           isOpen={activeModal === "add-garment"}
           closeActiveModal={closeActiveModal}
           onAddItem={handleAddItemModalSubmit}
+        />
+        <RegisterModal
+          isOpen={activeModal === "sign-up"}
+          closeActiveModal={closeActiveModal}
+          onSignup={handleRegisterModalSubmit}
+        />
+        <LogInModal
+          isOpen={activeModal === "log-in"}
+          closeActiveModal={closeActiveModal}
+          onLogin={handleLogInClick}
+        />
+        <EditProfileModal
+          isOpen={activeModal === "change-data"}
+          closeActiveModal={closeActiveModal}
+          onLogin={handleProfileChangeClick}
         />
         <Footer />
 

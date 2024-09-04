@@ -31,3 +31,10 @@
 
   border-radius: 30px;
 }
+.card__like-button {
+  background: transparent url(../assets/likebutton.png) center no-repeat;
+  width: 21px;
+  height: 18px;
+  border-style: none;
+  cursor: pointer;
+}

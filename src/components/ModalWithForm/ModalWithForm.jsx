@@ -5,7 +5,7 @@ function ModalWithForm({
   title,
   handleCloseClick,
   isOpen,
-  onSubmit,
+  onSubmit, // element.addEventLictener('click', ()=>{})
 }) {
   return (
     <div className={`modal ${isOpen ? "modal_opened" : ""} `}>

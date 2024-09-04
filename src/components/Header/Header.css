@@ -48,3 +48,9 @@
 .header__add-clothes-btn:hover {
   cursor: pointer;
 }
+.header__registration-button {
+  font-size: 20px;
+  border: none;
+  color: #000;
+  font-weight: 700;
+}

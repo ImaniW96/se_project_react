@@ -1,10 +1,17 @@
 import "./Header.css";
+
 import logo from "../../assets/logo.svg";
 import { Link } from "react-router-dom";
 import avatar from "../../assets/avatar.png";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 
-function Header({ handleAddClick, weatherData }) {
+function Header({
+  handleAddClick,
+  weatherData,
+  isLoggedIn,
+  handleSignupClick,
+  handleLoginClick,
+}) {
   const currentDate = new Date().toLocaleString("default", {
     month: "long",
     day: "numeric",
@@ -19,26 +26,43 @@ function Header({ handleAddClick, weatherData }) {
         {currentDate}, {weatherData.city}
       </p>
       <ToggleSwitch />
-      <button
-        onClick={handleAddClick}
-        type="button"
-        className="header__add-clothes-btn"
-      >
-        +Add clothes
-      </button>
+
       {/* 
       <ToggleSwitch /> */}
-
-      <div className="header__user-container">
-        <Link className="header__link" to="/profile">
-          <p className="header__username">Terrence Tegegne</p>
-          <img
-            src={avatar}
-            alt={"TerrenceTegegne"}
-            className="header__avatar"
-          />
-        </Link>
-      </div>
+      {isLoggedIn ? (
+        <div className="header__user-container">
+          <button
+            onClick={handleAddClick}
+            type="button"
+            className="header__add-clothes-btn"
+          >
+            +Add clothes
+          </button>
+          <Link className="header__link" to="/profile">
+            <p className="header__username">Terrence Tegegne</p>
+            <img
+              src={avatar}
+              alt={"TerrenceTegegne"}
+              className="header__avatar"
+            />
+          </Link>
+        </div>
+      ) : (
+        <>
+          <button
+            className="header__registration-button"
+            onClick={handleSignupClick}
+          >
+            Sign up
+          </button>
+          <button
+            className="header__registration-button"
+            onClick={handleLoginClick}
+          >
+            Log In
+          </button>
+        </>
+      )}
     </header>
   );
 }
