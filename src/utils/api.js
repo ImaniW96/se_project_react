@@ -1,11 +1,17 @@
 const baseUrl = "http://localhost:3001";
 const headers = { "Content-Type": "application/json" };
-
 // function getItems() {
 //   return fetch(`${baseUrl}/items`).then((res) => {
 //     return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
 //   });
 // }
+function getHeaders(token) {
+  const headers = {
+    "Content-Type": "application/json",
+    authorization: `Bearer ${token}`,
+  };
+  return headers;
+}
 function getItems() {
   return fetch(`${baseUrl}/items`)
     .then(checkResponse)
@@ -13,7 +19,23 @@ function getItems() {
       console.error("Error fetching items:", error);
     });
 }
+// function items() {
+//   return fetch(`${baseUrl}/users/me`)
+//     .then(checkResponse)
 
+//     .catch((error) => {
+//       console.error("Error fetching items:", error);
+//     });
+// }
+function getCurrentUser(token) {
+  console.log(token);
+  return fetch(`${baseUrl}/users/me`, {
+    method: "GET",
+    headers: getHeaders(token),
+  }).then((res) => {
+    return checkResponse(res);
+  });
+}
 function deleteItemById(Id) {
   return fetch(`${baseUrl}/items/${Id}`, {
     method: "DELETE",
@@ -40,5 +62,22 @@ function checkResponse(res) {
     return Promise.reject(`Error: ${res.status}`);
   }
 }
+function updateUser() {
+  return fetch(`${this._baseUrl}/users/me `, {
+    method: "PATCH",
+    headers: this._headers,
+    body: JSON.stringify({ avatar: FormData.link, name: FormData.name }),
+  }).then((res) => {
+    return this.checkResponse(res);
+  });
+}
 
-export { getItems, addItem, deleteItemById, checkResponse, baseUrl };
+export {
+  getItems,
+  addItem,
+  deleteItemById,
+  checkResponse,
+  getCurrentUser,
+  updateUser,
+  baseUrl,
+};

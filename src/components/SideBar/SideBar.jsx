@@ -12,7 +12,6 @@ function SideBar({ isOpen, handleProfileChangeClick }) {
         <button
           className="sidebar__data_change"
           onClick={(e) => {
-            debugger;
             handleProfileChangeClick(e);
           }}
           // isOpen={activeModal === "change-data"}

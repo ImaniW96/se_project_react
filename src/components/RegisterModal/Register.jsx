@@ -73,7 +73,7 @@ function RegisterModal({ isOpen, closeActiveModal, onSignup }) {
         <input
           type="text"
           className="modal__input"
-          id="imageUrl"
+          id="avatarUrl"
           placeholder="Avatar Url"
           name="avatarUrl"
           value={values.avatarUrl}

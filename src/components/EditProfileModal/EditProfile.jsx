@@ -17,7 +17,7 @@ function EditProfileModal({ isOpen, closeActiveModal, changeProfileData }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSignup(values);
+    changeProfileData(values);
   };
 
   console.log({ values });

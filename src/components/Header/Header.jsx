@@ -1,9 +1,10 @@
 import "./Header.css";
-
+import React, { useContext } from "react";
 import logo from "../../assets/logo.svg";
 import { Link } from "react-router-dom";
 import avatar from "../../assets/avatar.png";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
+import CurrentUserContext from "../../contexts/CurrentUserContext";
 
 function Header({
   handleAddClick,
@@ -12,6 +13,8 @@ function Header({
   handleSignupClick,
   handleLoginClick,
 }) {
+  const { currentUser } = useContext(CurrentUserContext);
+  console.log(CurrentUserContext);
   const currentDate = new Date().toLocaleString("default", {
     month: "long",
     day: "numeric",
@@ -27,8 +30,6 @@ function Header({
       </p>
       <ToggleSwitch />
 
-      {/* 
-      <ToggleSwitch /> */}
       {isLoggedIn ? (
         <div className="header__user-container">
           <button
@@ -39,10 +40,10 @@ function Header({
             +Add clothes
           </button>
           <Link className="header__link" to="/profile">
-            <p className="header__username">Terrence Tegegne</p>
+            <p className="header__username">{currentUser.name}</p>
             <img
-              src={avatar}
-              alt={"TerrenceTegegne"}
+              src={currentUser.avatar}
+              alt={currentUser.name}
               className="header__avatar"
             />
           </Link>

@@ -4,6 +4,12 @@ function ItemModal({ activeModal, onClick, card, handleDeleteItem }) {
     handleDeleteItem(card._id);
     onClick();
   };
+  // const isOwn = selectedCard.owner === currentUser._id;
+
+  // // Creating a variable which you'll then set in `className` for the delete button
+  // const itemDeleteButtonClassName = `item__delete-button ${
+  //   isOwn ? "item__delete-button_visible" : "item__delete-button_hidden"
+  // }`;
   return (
     <div className={`modal ${activeModal === "preview" && "modal_opened"} `}>
       <div className="modal__content modal__content_image modal__content_type_image">

@@ -134,3 +134,10 @@
   margin-left: 0;
   margin-top: 15px;
 }
+.modal__add_submit {
+  margin-top: 20px;
+  height: 36px;
+  width: 124px;
+  background-color: #000;
+  color: #fff;
+}
