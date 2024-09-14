@@ -52,6 +52,9 @@ function LogInModal({ isOpen, closeActiveModal, onLogin }) {
           onChange={handleChange}
         />
       </label>
+      <button type="submit" className="modal__add_submit">
+        Next
+      </button>
     </ModalWithForm>
   );
 }

@@ -141,3 +141,16 @@
   background-color: #000;
   color: #fff;
 }
+.modal__login_submit {
+  margin-top: 20px;
+  height: 36px;
+  width: 124px;
+  /* background-color: #000; */
+  /* color: #fff; */
+  /* position: relative; */
+  /* margin-left: 150px; */
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  border: none;
+}

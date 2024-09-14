@@ -7,12 +7,14 @@ function Profile({
   clothingItems,
   handleAddClick,
   handleProfileChangeClick,
+  handleLogOut,
 }) {
   return (
     <div className="profile">
       <section className="profile__sidebar">
         <SideBar
           handleProfileChangeClick={handleProfileChangeClick}
+          handleLogOut={handleLogOut}
           // isOpen={activeModal === "change-data"}
         />
       </section>

@@ -48,7 +48,7 @@ function deleteItemById(Id) {
 function addItem({ name, weather, imageUrl }) {
   return fetch(`${baseUrl}/items`, {
     method: "POST",
-    headers: headers,
+    headers: getHeaders(),
     body: JSON.stringify({ name, weather, imageUrl }),
   }).then((res) => {
     return checkResponse(res);
@@ -63,15 +63,22 @@ function checkResponse(res) {
   }
 }
 function updateUser() {
-  return fetch(`${this._baseUrl}/users/me `, {
+  return fetch(`${baseUrl}/users/me `, {
     method: "PATCH",
-    headers: this._headers,
+    headers: headers,
     body: JSON.stringify({ avatar: FormData.link, name: FormData.name }),
   }).then((res) => {
-    return this.checkResponse(res);
+    return checkResponse(res);
   });
 }
-
+function likeCard(cardId) {
+  return fetch(`${baseUrl}/items/${cardId}/likes`, {
+    method: isLiked ? "DELETE" : "PUT",
+    headers: getHeaders,
+  }).then((res) => {
+    return checkResponse(res);
+  });
+}
 export {
   getItems,
   addItem,
@@ -79,5 +86,6 @@ export {
   checkResponse,
   getCurrentUser,
   updateUser,
+  likeCard,
   baseUrl,
 };

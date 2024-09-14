@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
-function EditProfileModal({ isOpen, closeActiveModal, changeProfileData }) {
+function EditProfileModal({ isOpen, closeActiveModal, onEditProfile }) {
   const [values, setFormData] = useState({
     name: "",
     avatarUrl: "",
@@ -17,7 +17,7 @@ function EditProfileModal({ isOpen, closeActiveModal, changeProfileData }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    changeProfileData(values);
+    onEditProfile();
   };
 
   console.log({ values });
@@ -53,6 +53,9 @@ function EditProfileModal({ isOpen, closeActiveModal, changeProfileData }) {
           onChange={handleChange}
         />
       </label>
+      <button type="submit" className="modal__add_submit">
+        Save Changes
+      </button>
     </ModalWithForm>
   );
 }

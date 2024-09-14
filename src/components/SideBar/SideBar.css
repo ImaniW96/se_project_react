@@ -3,6 +3,7 @@
   display: flex;
   white-space: nowrap;
   margin-left: 10px;
+  font-size: 20px;
 }
 .sidebar {
   display: flex;
@@ -14,8 +15,16 @@
   margin-bottom: 20px;
   border: none;
   font-weight: 700;
+  white-space: nowrap;
+  font-size: 20px;
 }
 .sidebar__logout {
   border: none;
   font-weight: 700;
+  font-size: 20px;
+}
+.sidebar__avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
 }

@@ -7,12 +7,12 @@ import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import ItemModal from "../ItemModal/ItemModal";
 import Profile from "../Profile/Profile";
 import { signup, signin } from "../../utils/auth";
-
+import { updateUser } from "../../utils/api";
 import Footer from "../Footer/Footer";
 import { getWeather, filterWeatherData } from "../../utils/weatherApi";
 import { corrdinates, APIkey } from "../../utils/constants";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate, useNavigate } from "react-router-dom";
 import {
   getItems,
   addItem,
@@ -23,10 +23,12 @@ import AddItemModal from "../AddItemModal/AddItemModal";
 import RegisterModal from "../RegisterModal/Register";
 import LogInModal from "../LoginModal/LogIn";
 import EditProfileModal from "../EditProfileModal/EditProfile";
-import CurrentUserContext from "../../contexts/CurrentTemperatureUnitContext";
+import CurrentUserContext from "../../contexts/CurrentUserContext";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
+import SideBar from "../SideBar/SideBar";
 
 function App() {
+  const navigate = useNavigate();
   const [weatherData, setWeatherData] = useState({
     type: "",
     temp: { F: 998 },
@@ -44,6 +46,7 @@ function App() {
     avatar: "",
     _id: "",
   });
+
   console.log(currentUser);
   const handleCardClick = (card) => {
     setActiveModal("preview");
@@ -70,10 +73,11 @@ function App() {
   //   avatarUrl: "",
   // }
 
-  function UpdateUserInfo() {
-    updateUser({ avatar: avatar, name: name })
-      .then((res) => {
-        userInfo.setUserAvatar(res);
+  function handleUpdateUserInfo() {
+    updateUser({ avatar: FormData.link, name: FormData.name })
+      .then((data) => {
+        setUserInfo(data);
+        // setCurrentUser();
         closeActiveModal();
       })
       .catch((err) => {
@@ -101,6 +105,7 @@ function App() {
         console.log(">> Login Response", res);
 
         localStorage.setItem("jwt", res.token);
+        navigate("/profile");
 
         closeActiveModal();
       })
@@ -108,7 +113,11 @@ function App() {
         console.error("Can not log in", err);
       });
   };
-
+  const handleLogOut = () => {
+    localStorage.removeItem("jwt");
+    navigate("/");
+    setIsLoggedIn(false);
+  };
   const handleDeleteItem = (id) => {
     // Delete the item on the server
     return deleteItemById(id)
@@ -176,20 +185,20 @@ function App() {
   //   const token = localStorage.getItem("jwt");
   //   // Check if this card is not currently liked
   //   !isLiked
-  //     ? // if so, send a request to add the user's id to the card's likes array
+  //     ?
   //       api
-  //         // the first argument is the card's id
-  //         .addCardLike(id, token)
+  //
+  //         .addCardLike(id, jwt)
   //         .then((updatedCard) => {
   //           setClothingItems((cards) =>
   //             cards.map((item) => (item._id === id ? updatedCard : item))
   //           );
   //         })
   //         .catch((err) => console.log(err))
-  //     : // if not, send a request to remove the user's id from the card's likes array
+  //     :
   //       api
-  //         // the first argument is the card's id
-  //         .removeCardLike(id, token)
+  //
+  //         .removeCardLike(id, jwt)
   //         .then((updatedCard) => {
   //           setClothingItems((cards) =>
   //             cards.map((item) => (item._id === id ? updatedCard : item))
@@ -203,7 +212,7 @@ function App() {
   };
 
   return (
-    <CurrentUserContext.Provider value={{ currentUser }}>
+    <CurrentUserContext.Provider value={currentUser}>
       <CurrentTemperatureUnitContext.Provider
         value={{ currentTemperatureUnit, handleToggleSwitchChange }}
       >
@@ -225,6 +234,8 @@ function App() {
                     weatherData={weatherData}
                     handleCardClick={handleCardClick}
                     clothingItems={clothingItems}
+                    // onCardLike={handleCardLike}
+                    // isLiked={isLiked}
                   />
                 }
               />
@@ -237,6 +248,8 @@ function App() {
                       clothingItems={clothingItems}
                       handleAddClick={handleAddClick}
                       handleProfileChangeClick={handleProfileChangeClick}
+                      handleLogOut={handleLogOut}
+                      // onCardLike={handleCardLike}
                     />
                   </ProtectedRoute>
                 }
@@ -253,6 +266,7 @@ function App() {
             isOpen={activeModal === "sign-up"}
             closeActiveModal={closeActiveModal}
             onSignup={handleRegisterModalSubmit}
+            handleLoginClick={handleLogInClick}
           />
           <LogInModal
             isOpen={activeModal === "log-in"}
@@ -262,7 +276,7 @@ function App() {
           <EditProfileModal
             isOpen={activeModal === "change-data"}
             closeActiveModal={closeActiveModal}
-            // onEditProfile={handleUpdateUser}
+            onEditProfile={handleUpdateUserInfo}
           />
           <Footer />
 
@@ -271,6 +285,7 @@ function App() {
             card={selectedCard}
             onClick={closeActiveModal}
             handleDeleteItem={handleDeleteItem}
+            // onCardLike={handleCardLike}
           />
         </div>
       </CurrentTemperatureUnitContext.Provider>

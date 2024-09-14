@@ -13,7 +13,7 @@ function Header({
   handleSignupClick,
   handleLoginClick,
 }) {
-  const { currentUser } = useContext(CurrentUserContext);
+  const currentUser = useContext(CurrentUserContext);
   console.log(CurrentUserContext);
   const currentDate = new Date().toLocaleString("default", {
     month: "long",
@@ -50,6 +50,9 @@ function Header({
         </div>
       ) : (
         <>
+          {/* <div className="header__avatar_placeholder">
+            {currentUser?.name.charAt(0).toUpperCase()}
+          </div> */}
           <button
             className="header__registration-button"
             onClick={handleSignupClick}

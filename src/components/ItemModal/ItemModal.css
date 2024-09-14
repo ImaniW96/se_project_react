@@ -19,10 +19,13 @@
 }
 
 .modal__footer {
+  background-color: #fff;
   padding: 0 28px 28px 28px;
   position: relative;
   display: flex;
   flex-direction: column;
+  width: 100%;
+  box-sizing: border-box;
 }
 .modal__delete-btn {
   font-weight: 700;
