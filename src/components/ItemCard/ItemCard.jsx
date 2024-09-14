@@ -6,10 +6,21 @@ function ItemCard({ item, onCardClick }) {
     onCardClick(item);
   };
 
-  const isLiked = item.likes.some((id) => id === currentUser._id);
   // const itemLikeButtonClassName = `...`;
   const currentUser = useContext(CurrentUserContext);
   const isOwn = item.owner === currentUser._id;
+  const isLiked = item.likes.some((likeId) => likeId === userData._id);
+
+  // const itemLikeButtonClassName = isLiked
+  //   ? "card__like-button-active"
+  //   : "card__like-button";
+
+  // const handleLikeClick = (e) => {
+  //   e.preventDefault();
+
+  //   onCardLike(item, isLiked);
+
+  // };
   return (
     <>
       <li className="card card__profile">

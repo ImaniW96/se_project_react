@@ -73,11 +73,11 @@ function App() {
   //   avatarUrl: "",
   // }
 
-  function handleUpdateUserInfo() {
-    updateUser({ avatar: FormData.link, name: FormData.name })
+  function handleUpdateUserInfo(formData) {
+    const token = localStorage.getItem("jwt");
+    updateUser({ avatar: formData.link, name: formData.name }, token)
       .then((data) => {
         setUserInfo(data);
-        // setCurrentUser();
         closeActiveModal();
       })
       .catch((err) => {
@@ -181,31 +181,29 @@ function App() {
       .catch(console.error);
   }, [isLoggedIn]);
 
-  // const handleCardLike = ({ id, isLiked }) => {
-  //   const token = localStorage.getItem("jwt");
-  //   // Check if this card is not currently liked
-  //   !isLiked
-  //     ?
-  //       api
-  //
-  //         .addCardLike(id, jwt)
-  //         .then((updatedCard) => {
-  //           setClothingItems((cards) =>
-  //             cards.map((item) => (item._id === id ? updatedCard : item))
-  //           );
-  //         })
-  //         .catch((err) => console.log(err))
-  //     :
-  //       api
-  //
-  //         .removeCardLike(id, jwt)
-  //         .then((updatedCard) => {
-  //           setClothingItems((cards) =>
-  //             cards.map((item) => (item._id === id ? updatedCard : item))
-  //           );
-  //         })
-  //         .catch((err) => console.log(err));
-  // };
+  const handleCardLike = ({ id, isLiked }) => {
+    const token = localStorage.getItem("jwt");
+    // Check if this card is not currently liked
+    !isLiked
+      ? api
+
+          .addCardLike(id, token)
+          .then((updatedCard) => {
+            setClothingItems((cards) =>
+              cards.map((item) => (item._id === id ? updatedCard : item))
+            );
+          })
+          .catch((err) => console.log(err))
+      : api
+
+          .removeCardLike(id, token)
+          .then((updatedCard) => {
+            setClothingItems((cards) =>
+              cards.map((item) => (item._id === id ? updatedCard : item))
+            );
+          })
+          .catch((err) => console.log(err));
+  };
 
   const handleToggleSwitchChange = () => {
     setCurrentTemperatureUnit(currentTemperatureUnit === "F" ? "C" : "F");
@@ -234,7 +232,7 @@ function App() {
                     weatherData={weatherData}
                     handleCardClick={handleCardClick}
                     clothingItems={clothingItems}
-                    // onCardLike={handleCardLike}
+                    onCardLike={handleCardLike}
                     // isLiked={isLiked}
                   />
                 }
@@ -249,7 +247,7 @@ function App() {
                       handleAddClick={handleAddClick}
                       handleProfileChangeClick={handleProfileChangeClick}
                       handleLogOut={handleLogOut}
-                      // onCardLike={handleCardLike}
+                      onCardLike={handleCardLike}
                     />
                   </ProtectedRoute>
                 }

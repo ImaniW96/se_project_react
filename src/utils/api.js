@@ -62,10 +62,10 @@ function checkResponse(res) {
     return Promise.reject(`Error: ${res.status}`);
   }
 }
-function updateUser() {
+function updateUser(FormData, token) {
   return fetch(`${baseUrl}/users/me `, {
     method: "PATCH",
-    headers: headers,
+    headers: getHeaders(token),
     body: JSON.stringify({ avatar: FormData.link, name: FormData.name }),
   }).then((res) => {
     return checkResponse(res);
