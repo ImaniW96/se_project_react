@@ -28,20 +28,27 @@
 
 .card__image {
   width: 100%;
-
   border-radius: 30px;
 }
 .card__like-button {
-  background: transparent url(../assets/likebutton.png) center no-repeat;
+  background: transparent url(../assets/defaultLikeButton.png) center no-repeat;
   width: 21px;
   height: 18px;
+  border: none;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-color: transparent;
   border-style: none;
   cursor: pointer;
 }
 .card__like-button-active {
-  background: transparent url(../assets/likebutton.png) center no-repeat;
+  background: transparent url(../assets/activeLikeButton.png) center no-repeat;
   width: 21px;
   height: 18px;
+  border: none;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-color: transparent;
   border-style: none;
   cursor: pointer;
 }
