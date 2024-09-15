@@ -45,7 +45,7 @@ function deleteItemById(Id) {
   });
 }
 
-function addItem({ name, weather, imageUrl, token }) {
+function addItem({ name, weather, imageUrl }, token) {
   return fetch(`${baseUrl}/items`, {
     method: "POST",
     headers: getHeaders(token),

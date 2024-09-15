@@ -137,8 +137,9 @@ function App() {
     setActiveModal("");
   };
   const handleAddItemModalSubmit = (values) => {
+    const token = localStorage.getItem("jwt");
     // add the item to the server
-    return addItem(values)
+    return addItem(values, token)
       .then((item) => {
         // add the item on the dom
         setClothingItems([item, ...clothingItems]);
