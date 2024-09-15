@@ -36,10 +36,10 @@ function getCurrentUser(token) {
     return checkResponse(res);
   });
 }
-function deleteItemById(Id) {
+function deleteItemById(Id, token) {
   return fetch(`${baseUrl}/items/${Id}`, {
     method: "DELETE",
-    headers: headers,
+    headers: getHeaders(token),
   }).then((res) => {
     return checkResponse(res);
   });

@@ -119,8 +119,9 @@ function App() {
     setIsLoggedIn(false);
   };
   const handleDeleteItem = (id) => {
+    const token = localStorage.getItem("jwt");
     // Delete the item on the server
-    return deleteItemById(id)
+    return deleteItemById(id, token)
       .then(() => {
         // Filter out the deleted item from clothingItems
         const updatedClothingItems = clothingItems.filter(

@@ -26,6 +26,7 @@
   flex-direction: column;
   width: 100%;
   box-sizing: border-box;
+  border-radius: 20px;
 }
 .modal__delete-btn {
   font-weight: 700;
@@ -36,7 +37,7 @@
   border: none;
   background-color: #fff;
   margin-top: 15px;
-  right: -270px;
+  right: 40px;
 }
 .modal__caption {
   margin-bottom: 0;
