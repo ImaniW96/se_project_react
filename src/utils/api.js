@@ -66,7 +66,7 @@ function updateUser(FormData, token) {
   return fetch(`${baseUrl}/users/me `, {
     method: "PATCH",
     headers: getHeaders(token),
-    body: JSON.stringify({ avatarUrl: FormData.imageUrl, name: FormData.name }),
+    body: JSON.stringify(FormData),
   }).then((res) => {
     return checkResponse(res);
   });

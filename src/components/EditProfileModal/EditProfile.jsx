@@ -4,7 +4,7 @@ import ModalWithForm from "../ModalWithForm/ModalWithForm";
 function EditProfileModal({ isOpen, closeActiveModal, onEditProfile }) {
   const [values, setFormData] = useState({
     name: "",
-    avatarUrl: "",
+    imageUrl: "",
   });
 
   const handleChange = (event) => {
@@ -48,7 +48,7 @@ function EditProfileModal({ isOpen, closeActiveModal, onEditProfile }) {
           className="modal__input"
           id="imageUrl"
           placeholder="Avatar Url"
-          name="avatar Url"
+          name="imageUrl"
           value={values.imageUrl}
           onChange={handleChange}
         />
