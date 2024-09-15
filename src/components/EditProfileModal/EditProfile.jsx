@@ -17,7 +17,7 @@ function EditProfileModal({ isOpen, closeActiveModal, onEditProfile }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onEditProfile();
+    onEditProfile(values);
   };
 
   console.log({ values });

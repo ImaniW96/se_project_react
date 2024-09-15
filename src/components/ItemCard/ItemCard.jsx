@@ -8,24 +8,26 @@ function ItemCard({ item, onCardClick }) {
 
   // const itemLikeButtonClassName = `...`;
   const currentUser = useContext(CurrentUserContext);
-  const isOwn = item.owner === currentUser._id;
+  // const isOwn = item.owner === currentUser._id;
+
   const isLiked = item.likes.some((likeId) => likeId === userData._id);
 
-  // const itemLikeButtonClassName = isLiked
-  //   ? "card__like-button-active"
-  //   : "card__like-button";
+  const itemLikeButton = isLiked
+    ? "card__like-button-active"
+    : "card__like-button";
 
-  // const handleLikeClick = (e) => {
-  //   e.preventDefault();
+  const handleLikeClick = (e) => {
+    e.preventDefault();
 
-  //   onCardLike(item, isLiked);
-
-  // };
+    onCardLike(item, isLiked);
+  };
   return (
     <>
       <li className="card card__profile">
         <h2 className="card__name">{item.name}</h2>
-        {isLiked && <button className="card__like-button">{item.like}</button>}
+        {isLiked && (
+          <button className={itemLikeButton} onClick={handleLikeClick}></button>
+        )}
         <img
           onClick={handleCardClick}
           className="card__image"
