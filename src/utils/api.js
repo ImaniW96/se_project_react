@@ -45,10 +45,10 @@ function deleteItemById(Id) {
   });
 }
 
-function addItem({ name, weather, imageUrl }) {
+function addItem({ name, weather, imageUrl, token }) {
   return fetch(`${baseUrl}/items`, {
     method: "POST",
-    headers: getHeaders(),
+    headers: getHeaders(token),
     body: JSON.stringify({ name, weather, imageUrl }),
   }).then((res) => {
     return checkResponse(res);
@@ -66,7 +66,7 @@ function updateUser(FormData, token) {
   return fetch(`${baseUrl}/users/me `, {
     method: "PATCH",
     headers: getHeaders(token),
-    body: JSON.stringify({ avatar: FormData.link, name: FormData.name }),
+    body: JSON.stringify({ avatarUrl: FormData.imageUrl, name: FormData.name }),
   }).then((res) => {
     return checkResponse(res);
   });

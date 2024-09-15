@@ -57,3 +57,6 @@
   color: #000;
   font-weight: 700;
 }
+.header__avatar_placeholder {
+  background-color: grey;
+}

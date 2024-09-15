@@ -38,3 +38,10 @@
   border-style: none;
   cursor: pointer;
 }
+.card__like-button-active {
+  background: transparent url(../assets/likebutton.png) center no-repeat;
+  width: 21px;
+  height: 18px;
+  border-style: none;
+  cursor: pointer;
+}

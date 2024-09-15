@@ -50,9 +50,9 @@ function Header({
         </div>
       ) : (
         <>
-          {/* <div className="header__avatar_placeholder">
+          <div className="header__avatar_placeholder">
             {currentUser?.name.charAt(0).toUpperCase()}
-          </div> */}
+          </div>
           <button
             className="header__registration-button"
             onClick={handleSignupClick}

@@ -75,9 +75,9 @@ function App() {
 
   function handleUpdateUserInfo(formData) {
     const token = localStorage.getItem("jwt");
-    updateUser({ avatar: formData.link, name: formData.name }, token)
+    updateUser({ avatarUrl: formData.imageUrl, name: formData.name }, token)
       .then((data) => {
-        setCurrentUser(data);
+        setCurrentUser(data.data);
         closeActiveModal();
       })
       .catch((err) => {
