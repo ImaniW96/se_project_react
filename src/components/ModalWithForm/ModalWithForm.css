@@ -140,6 +140,7 @@
   width: 124px;
   background-color: #000;
   color: #fff;
+  margin-right: 20px;
 }
 .modal__login_submit {
   margin-top: 20px;
@@ -153,4 +154,7 @@
   align-items: center;
   display: flex;
   border: none;
+}
+.modal__button_container {
+  display: flex;
 }

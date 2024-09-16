@@ -85,16 +85,18 @@ function RegisterModal({
           onChange={handleChange}
         />
       </label>
-      <button type="submit" className="modal__add_submit">
-        Sign up
-      </button>
-      <button
-        type="submit"
-        className="modal__login_submit"
-        onClick={handleLoginClick}
-      >
-        Or Log in
-      </button>
+      <div className="modal__button_container">
+        <button type="submit" className="modal__add_submit">
+          Sign up
+        </button>
+        <button
+          type="submit"
+          className="modal__login_submit"
+          onClick={handleLoginClick}
+        >
+          Or Log in
+        </button>
+      </div>
     </ModalWithForm>
   );
 }
