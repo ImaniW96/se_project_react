@@ -1,15 +1,12 @@
 import { checkResponse } from "./api.js";
 
- 
-
 export const getWeather = ({ latitude, longitude }, APIkey) => {
   return fetch(
     `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=imperial&appid=${APIkey}`
-  )
-    .then(checkResponse)
-    .catch((error) => {
-      console.error("Error fetching weather data:", error);
-    });
+  ).then(checkResponse);
+  // .catch((error) => {
+  //   console.error("Error fetching weather data:", error);
+  // });
 };
 export const filterWeatherData = (data) => {
   const result = {};

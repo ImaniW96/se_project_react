@@ -1,9 +1,15 @@
 import { baseUrl, checkResponse } from "./api";
-
+function getHeaders(token) {
+  const headers = {
+    "Content-Type": "application/json",
+    authorization: `Bearer ${token}`,
+  };
+  return headers;
+}
 export function signup(name, avatar, email, password) {
   return fetch(`${baseUrl}/signup`, {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
+    headers: getHeaders(token),
     body: JSON.stringify({ name, avatar, email, password }),
   }).then((res) => {
     return checkResponse(res);

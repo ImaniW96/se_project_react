@@ -1,10 +1,27 @@
 import React, { useState } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
+import { useContext } from "react";
+import CurrentUserContext from "../../contexts/CurrentUserContext";
 
-function EditProfileModal({ isOpen, closeActiveModal, onEditProfile }) {
-  const [values, setFormData] = useState({
+function EditProfileModal({
+  isOpen,
+  closeActiveModal,
+  onEditProfile,
+  currentUser,
+}) {
+  const currentuser = { CurrentUserContext };
+  const [user, setuser] = useContext({
     name: "",
     imageUrl: "",
+  });
+  useEffect(() => {
+    if (currentUser) {
+      setuser(currentUser);
+    }
+  }, []);
+  const [values, setFormData] = useState({
+    name: user.name,
+    imageUrl: user.imageUrl,
   });
 
   const handleChange = (event) => {

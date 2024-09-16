@@ -26,6 +26,7 @@ import EditProfileModal from "../EditProfileModal/EditProfile";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 import SideBar from "../SideBar/SideBar";
+import { likeCard } from "../../utils/api";
 
 function App() {
   const navigate = useNavigate();
@@ -201,28 +202,17 @@ function App() {
       .catch(console.error);
   }, [isLoggedIn]);
 
-  const handleCardLike = ({ id, isLiked }) => {
+  const handleCardLike = (id, isLiked) => {
     const token = localStorage.getItem("jwt");
     // Check if this card is not currently liked
-    !isLiked
-      ? api
 
-          .addCardLike(id, token)
-          .then((updatedCard) => {
-            setClothingItems((cards) =>
-              cards.map((item) => (item._id === id ? updatedCard : item))
-            );
-          })
-          .catch((err) => console.log(err))
-      : api
-
-          .removeCardLike(id, token)
-          .then((updatedCard) => {
-            setClothingItems((cards) =>
-              cards.map((item) => (item._id === id ? updatedCard : item))
-            );
-          })
-          .catch((err) => console.log(err));
+    likeCard(id, isLiked, token)
+      .then((updatedCard) => {
+        setClothingItems((cards) =>
+          cards.map((item) => (item._id === id ? updatedCard : item))
+        );
+      })
+      .catch((err) => console.log(err));
   };
 
   const handleToggleSwitchChange = () => {

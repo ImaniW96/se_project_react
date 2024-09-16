@@ -1,10 +1,6 @@
 const baseUrl = "http://localhost:3001";
 const headers = { "Content-Type": "application/json" };
-// function getItems() {
-//   return fetch(`${baseUrl}/items`).then((res) => {
-//     return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
-//   });
-// }
+
 function getHeaders(token) {
   const headers = {
     "Content-Type": "application/json",
@@ -13,11 +9,10 @@ function getHeaders(token) {
   return headers;
 }
 function getItems() {
-  return fetch(`${baseUrl}/items`)
-    .then(checkResponse)
-    .catch((error) => {
-      console.error("Error fetching items:", error);
-    });
+  return fetch(`${baseUrl}/items`).then(checkResponse);
+  // .catch((error) => {
+  //   console.error("Error fetching items:", error);
+  // });
 }
 // function items() {
 //   return fetch(`${baseUrl}/users/me`)
@@ -71,10 +66,10 @@ function updateUser(FormData, token) {
     return checkResponse(res);
   });
 }
-function likeCard(cardId) {
+function likeCard(cardId, isLiked, token) {
   return fetch(`${baseUrl}/items/${cardId}/likes`, {
     method: isLiked ? "DELETE" : "PUT",
-    headers: getHeaders,
+    headers: getHeaders(token),
   }).then((res) => {
     return checkResponse(res);
   });

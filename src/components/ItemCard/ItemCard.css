@@ -31,13 +31,13 @@
   border-radius: 30px;
 }
 .card__like-button {
-  background: transparent url(../assets/defaultLikeButton.png) center no-repeat;
+  background-image: url("../assets/defaultLikeButton.png");
   width: 21px;
   height: 18px;
   border: none;
   background-size: contain;
   background-repeat: no-repeat;
-  background-color: transparent;
+  background-color: red;
   border-style: none;
   cursor: pointer;
 }
@@ -51,4 +51,5 @@
   background-color: transparent;
   border-style: none;
   cursor: pointer;
+  background-color: blue;
 }

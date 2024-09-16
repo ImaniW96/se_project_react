@@ -1,7 +1,7 @@
 import "./ItemCard.css";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 import { useContext } from "react";
-function ItemCard({ item, onCardClick }) {
+function ItemCard({ item, onCardClick, onCardLike }) {
   const handleCardClick = () => {
     onCardClick(item);
   };
@@ -19,15 +19,16 @@ function ItemCard({ item, onCardClick }) {
   const handleLikeClick = (e) => {
     e.preventDefault();
 
-    onCardLike(item, isLiked);
+    onCardLike(item._id, isLiked);
   };
+
+  console.log(isLiked);
   return (
     <>
       <li className="card card__profile">
         <h2 className="card__name">{item.name}</h2>
-        {isLiked && (
-          <button className={itemLikeButton} onClick={handleLikeClick}></button>
-        )}
+        <button className={itemLikeButton} onClick={handleLikeClick}></button>
+
         <img
           onClick={handleCardClick}
           className="card__image"
