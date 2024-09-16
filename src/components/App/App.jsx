@@ -98,16 +98,34 @@ function App() {
       });
   }
 
+  // const handleSignin = ({ email, password }) => {
+  //   setIsLoggedIn(true);
+  //   signin(email, password)
+  //     .then((res) => {
+  //       console.log(">> Login Response", res);
+
+  //       localStorage.setItem("jwt", res.token);
+  //       setIsLoggedIn(true);
+  //       getCurrentUser();
+  //       navigate("/profile");
+
+  //       closeActiveModal();
+  //     })
+  //     .catch((err) => {
+  //       console.error("Can not log in", err);
+  //     });
+  // };
   const handleSignin = ({ email, password }) => {
-    setIsLoggedIn(true);
     signin(email, password)
       .then((res) => {
-        console.log(">> Login Response", res);
-
         localStorage.setItem("jwt", res.token);
-        navigate("/profile");
-
-        closeActiveModal();
+        getCurrentUser(res.token).then((userData) => {
+          // Eveything inside the getCurrentUser then block
+          setIsLoggedIn(true);
+          //set the current user
+          navigate("/profile");
+          closeActiveModal();
+        });
       })
       .catch((err) => {
         console.error("Can not log in", err);
