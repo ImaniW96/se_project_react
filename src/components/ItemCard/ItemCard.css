@@ -24,6 +24,7 @@
   text-align: center;
   transform: translateX(-50%);
   font-family: "CabinetGrotesk";
+  padding: 2px 12px;
 }
 
 .card__image {
@@ -58,4 +59,5 @@
   position: absolute;
   display: flex;
   flex-direction: row;
+  margin-top: 15px;
 }
