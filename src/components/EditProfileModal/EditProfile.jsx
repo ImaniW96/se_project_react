@@ -1,21 +1,30 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
+import CurrentUserContext from "../../contexts/CurrentUserContext";
 import { useContext } from "react";
 
 function EditProfileModal({
   isOpen,
   closeActiveModal,
   onEditProfile,
-  currentUser,
+  // currentUser,
 }) {
   const currentUser = useContext(CurrentUserContext);
 
-  const [user, setuser] = useState({ name: "", imageUrl: "" });
+  const [user, setUser] = useState({ name: "", imageUrl: "" });
+  // useEffect(() => {
+  //   if (currentUser) {
+  //     setuser({ name: currentUser.name, imageUrl: currentUser.avatar });
+  //   }
+  // }, []);
   useEffect(() => {
     if (currentUser) {
-      setuser({ name: currentUser.name, imageUrl: currentUser.avatar });
+      setUser({
+        name: currentUser.name,
+        imageUrl: currentUser.avatar, // assuming avatar is the imageUrl
+      });
     }
-  }, []);
+  }, [currentUser]);
 
   // const [values, setFormData] = useState({
   //   name="",
@@ -36,7 +45,7 @@ function EditProfileModal({
     onEditProfile(values);
   };
 
-  console.log({ values });
+  // console.log({ values });
   return (
     <ModalWithForm
       title="Change Profile Data"
@@ -54,7 +63,7 @@ function EditProfileModal({
           placeholder="Name"
           name="name"
           // value={values.name}
-          values={user.name}
+          value={user.name}
           onChange={handleChange}
         />
       </label>
@@ -67,7 +76,7 @@ function EditProfileModal({
           placeholder="Avatar Url"
           name="imageUrl"
           // value={values.imageUrl}
-          values={user.imageUrl}
+          value={user.imageUrl}
           onChange={handleChange}
         />
       </label>
