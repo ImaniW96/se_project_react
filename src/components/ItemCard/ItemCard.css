@@ -9,7 +9,7 @@
   margin: 20px;
 }
 .card__name {
-  position: absolute;
+  /* position: absolute; */
   top: 15px;
   left: 50%;
   margin: 0;
@@ -55,6 +55,7 @@
   background-color: transparent;
 }
 .card__header {
+  position: absolute;
   display: flex;
   flex-direction: row;
 }
