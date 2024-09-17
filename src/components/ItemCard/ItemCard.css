@@ -31,18 +31,7 @@
   border-radius: 30px;
 }
 .card__like-button {
-  background-image: url("../assets/defaultLikeButton.png");
-  width: 21px;
-  height: 18px;
-  border: none;
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-color: red;
-  border-style: none;
-  cursor: pointer;
-}
-.card__like-button-active {
-  background: transparent url(../assets/activeLikeButton.png) center no-repeat;
+  background-image: url("../../assets/defaultLikeButton.svg");
   width: 21px;
   height: 18px;
   border: none;
@@ -51,5 +40,21 @@
   background-color: transparent;
   border-style: none;
   cursor: pointer;
-  background-color: blue;
+}
+.card__like-button-active {
+  background: transparent url("../../assets/activeLikeButton.svg") center
+    no-repeat;
+  width: 21px;
+  height: 18px;
+  border: none;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-color: transparent;
+  border-style: none;
+  cursor: pointer;
+  background-color: transparent;
+}
+.card__header {
+  display: flex;
+  flex-direction: row;
 }
