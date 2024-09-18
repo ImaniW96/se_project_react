@@ -244,6 +244,7 @@ function App() {
                     handleCardClick={handleCardClick}
                     clothingItems={clothingItems}
                     onCardLike={handleCardLike}
+                    isAuthenticated={isLoggedIn}
                     // isLiked={isLiked}
                   />
                 }

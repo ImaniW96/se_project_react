@@ -90,7 +90,7 @@ function RegisterModal({
           Sign up
         </button>
         <button
-          type="submit"
+          type="button"
           className="modal__login_submit"
           onClick={handleLoginClick}
         >
