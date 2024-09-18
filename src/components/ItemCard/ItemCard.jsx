@@ -5,7 +5,7 @@ function ItemCard({ item, onCardClick, onCardLike, isAuthenticated }) {
   const handleCardClick = () => {
     onCardClick(item);
   };
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  // const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   // Toggle isAuthenticated state for testing purposes
   const toggleAuth = () => {
