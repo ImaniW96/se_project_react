@@ -38,7 +38,7 @@ const AddItemModal = ({ closeActiveModal, onAddItem, isOpen }) => {
         <input
           type="text"
           className="modal__input"
-          id="imageUrl"
+          id="additemimageUrl"
           placeholder="image Url"
           name="imageUrl"
           value={values.imageUrl}

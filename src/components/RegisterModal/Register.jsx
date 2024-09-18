@@ -66,7 +66,7 @@ function RegisterModal({
         <input
           type="text"
           className="modal__input"
-          id="name"
+          id="registername"
           placeholder="Name"
           name="name"
           value={values.name}

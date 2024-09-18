@@ -282,6 +282,7 @@ function App() {
           <LogInModal
             isOpen={activeModal === "log-in"}
             closeActiveModal={closeActiveModal}
+            handleSignupClick={handleSignupClick}
             onLogin={handleSignin}
           />
           <EditProfileModal

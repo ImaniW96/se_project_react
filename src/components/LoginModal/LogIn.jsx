@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
-function LogInModal({ isOpen, closeActiveModal, onLogin }) {
+function LogInModal({ isOpen, closeActiveModal, onLogin, handleSignupClick }) {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -34,7 +34,7 @@ function LogInModal({ isOpen, closeActiveModal, onLogin }) {
         <input
           type="text"
           className="modal__input"
-          id="email"
+          id="Email"
           placeholder="Email"
           name="email"
           value={formData.email}
@@ -46,7 +46,7 @@ function LogInModal({ isOpen, closeActiveModal, onLogin }) {
         <input
           type="text"
           className="modal__input"
-          id="password"
+          id="Password"
           placeholder="Password"
           name="password"
           value={formData.password}
@@ -57,7 +57,11 @@ function LogInModal({ isOpen, closeActiveModal, onLogin }) {
         <button type="submit" className="modal__add_submit">
           Next
         </button>
-        <button type="submit" className="modal__login_submit">
+        <button
+          type="button"
+          className="modal__login_submit"
+          onClick={handleSignupClick}
+        >
           or Sign Up
         </button>
       </div>

@@ -59,7 +59,7 @@ function EditProfileModal({
         <input
           type="text"
           className="modal__input"
-          id="name"
+          id="editprofilename"
           placeholder="Name"
           name="name"
           // value={values.name}
