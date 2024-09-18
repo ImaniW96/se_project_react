@@ -47,14 +47,20 @@ function LogInModal({ isOpen, closeActiveModal, onLogin }) {
           type="text"
           className="modal__input"
           id="password"
+          placeholder="Password"
           name="password"
           value={formData.password}
           onChange={handleChange}
         />
       </label>
-      <button type="submit" className="modal__add_submit">
-        Next
-      </button>
+      <div className="modal__button_container">
+        <button type="submit" className="modal__add_submit">
+          Next
+        </button>
+        <button type="submit" className="modal__login_submit">
+          or Sign Up
+        </button>
+      </div>
     </ModalWithForm>
   );
 }

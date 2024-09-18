@@ -87,7 +87,8 @@ function App() {
       });
   }
   function handleRegisterModalSubmit({ name, email, password, avatarUrl }) {
-    signup(name, avatarUrl, email, password)
+    const token = localStorage.getItem("jwt");
+    signup({ name, avatarUrl, email, password }, token)
       .then(() => {
         setIsLoggedIn(true);
         // log the user in here as well

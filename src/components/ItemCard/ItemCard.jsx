@@ -1,11 +1,16 @@
 import "./ItemCard.css";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 function ItemCard({ item, onCardClick, onCardLike }) {
   const handleCardClick = () => {
     onCardClick(item);
   };
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
+  // Toggle isAuthenticated state for testing purposes
+  const toggleAuth = () => {
+    setIsAuthenticated(!isAuthenticated);
+  };
   // const itemLikeButtonClassName = `...`;
   const currentUser = useContext(CurrentUserContext);
   // const isOwn = item.owner === currentUser._id;

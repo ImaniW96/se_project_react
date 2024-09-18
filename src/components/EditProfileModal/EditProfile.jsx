@@ -34,7 +34,7 @@ function EditProfileModal({
 
   const handleChange = (event) => {
     const { name, value } = event.target;
-    setFormData((prevData) => ({
+    setUser((prevData) => ({
       ...prevData,
       [name]: value,
     }));
@@ -42,7 +42,7 @@ function EditProfileModal({
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onEditProfile(values);
+    onEditProfile(user);
   };
 
   // console.log({ values });

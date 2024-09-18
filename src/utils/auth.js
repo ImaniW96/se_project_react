@@ -6,7 +6,7 @@ function getHeaders(token) {
   };
   return headers;
 }
-export function signup(name, avatar, email, password) {
+export function signup({ name, avatar, email, password }, token) {
   return fetch(`${baseUrl}/signup`, {
     method: "POST",
     headers: getHeaders(token),

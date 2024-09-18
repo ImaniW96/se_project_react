@@ -6,6 +6,7 @@ function ItemModal({ activeModal, onClick, card, handleDeleteItem }) {
     handleDeleteItem(card._id);
     onClick();
   };
+
   console.log(card);
   const currentUser = useContext(CurrentUserContext);
   const isOwn = card.owner === currentUser._id;
