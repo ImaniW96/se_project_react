@@ -98,3 +98,8 @@ export const defaultWeatherOptions = {
   day: { url: new URL("../assets/day/day.png", import.meta.url).href },
   night: { url: new URL("../assets/night/night.png", import.meta.url).href },
 };
+const baseUrl =
+  process.env.NODE_ENV === "production"
+    ? "https://api.what-to-wear.happyforever.com"
+    : "http://localhost:3001";
+export { baseUrl };

@@ -1,4 +1,5 @@
-import { baseUrl, checkResponse } from "./api";
+import { checkResponse } from "./api";
+import { baseUrl } from "../utils/constants";
 function getHeaders(token) {
   const headers = {
     "Content-Type": "application/json",

@@ -1,4 +1,5 @@
-const baseUrl = "http://localhost:3001";
+// const baseUrl = "http://localhost:3001";
+import { baseUrl } from "../utils/constants";
 const headers = { "Content-Type": "application/json" };
 
 function getHeaders(token) {
