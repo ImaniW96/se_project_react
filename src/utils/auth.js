@@ -7,11 +7,11 @@ function getHeaders(token) {
   };
   return headers;
 }
-export function signup({ name, avatar, email, password }, token) {
+export function signup({ name, avatarUrl, email, password }, token) {
   return fetch(`${baseUrl}/signup`, {
     method: "POST",
     headers: getHeaders(token),
-    body: JSON.stringify({ name, avatar, email, password }),
+    body: JSON.stringify({ name, avatar: avatarUrl, email, password }),
   }).then((res) => {
     return checkResponse(res);
   });
