@@ -90,6 +90,7 @@ function App() {
     const token = localStorage.getItem("jwt");
     signup({ name, avatarUrl, email, password }, token)
       .then(() => {
+        handleSignin({ name, avatarUrl, email, password });
         setIsLoggedIn(true);
         // log the user in here as well
         closeActiveModal();
